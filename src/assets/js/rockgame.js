@@ -210,7 +210,7 @@ export function determineRockTypeMano(answers) {
   } else {
     return {
       name: "No hay roca aquí",
-      image: "./src/assets/Therockimg.png",
+      image: "./Therockimg.png",
       description: "Se fue caminando...",
     };
   }
@@ -228,7 +228,7 @@ export function determineRockTypeDelgado(answers) {
   } else {
     return {
       name: "No hay roca aquí",
-      image: "./src/assets/Therockimg.png",
+      image: "./Therockimg.png",
       description: "Se fue caminando...",
     };
   }
