@@ -10,6 +10,13 @@ export const questionsMano = [
   { question: "¿Tiene fenocristales y matriz?", answers: ["Si", "No"] },
 ];
 
+export const questionsDelgado = [
+  {
+    question: "¿Cúal es su origen?",
+    answers: ["Fanerítico", "Afanítico", "Vítreo", "Vesicular"],
+  },
+];
+
 export function determineRockTypeMano(answers) {
   if (
     answers[0] === "Fanerítico" &&
@@ -203,8 +210,25 @@ export function determineRockTypeMano(answers) {
   } else {
     return {
       name: "No hay roca aquí",
+      image: "./src/assets/therock.png",
+      description: "Se fue caminando...",
+    };
+  }
+}
+
+export function determineRockTypeDelgado(answers) {
+  if (answers[0] === "Fanerítico") {
+    return {
+      name: "Granito",
       image:
-        "./src/assets/therock.png",
+        "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh_d7gxhUzVvS3MhxbLxprrJPTdEDkXBsxoQOEWsH0D1HmrEp_NgPAvSv1W-EzRFP26n-3bClgshJ5wf7n-Pdno7lV6bA6Z0B-olT9IUsUpDgdbYoSHz3GJuqz2J8Dzwc8tviBUM9Hh8gM/s1600/granito.jpg",
+      description:
+        "El granito es una roca ígnea plutónica formada por la solidificación lenta de una masa de magma a gran profundidad en la corteza terrestre. Está compuesto por cuarzo, feldespato y mica.",
+    };
+  } else {
+    return {
+      name: "No hay roca aquí",
+      image: "./src/assets/therock.png",
       description: "Se fue caminando...",
     };
   }
