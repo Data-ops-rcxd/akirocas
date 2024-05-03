@@ -1,0 +1,32 @@
+.cont {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  margin: 3rem;
+  padding: 4rem;
+  border: 0.2rem solid black;
+  border-radius: 10px;
+  background-color: #f0f0f0;
+  width: 400px;
+  height: 400px;
+  transition: transform 0.5s;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.rockcard__name {
+  font-size: 35px;
+  font-weight: bold;
+  color: #000000;
+}
+
+.rockcard__description {
+  font-size: large;
+  color: #000000;
+}
+
+.img {
+  height: 200px;
+  width: 200px;
+  border-radius: 1rem;
+}

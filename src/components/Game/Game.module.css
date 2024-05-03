@@ -1,0 +1,8 @@
+.gameMano__options {
+  display: flex;
+  justify-content: space-between;
+}
+
+.gameMano__option {
+  margin: 0.2rem;
+}
