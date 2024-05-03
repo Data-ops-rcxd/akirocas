@@ -53,7 +53,11 @@ function Game({ gametype, resetGame }) {
             <div className={styles.gameMano__options}>
               {questionsMano[currentQuestionIndex].answers.map(
                 (answer, index) => (
-                  <button className={styles.gameMano__option} key={index} onClick={() => handeAnswerMano(answer)}>
+                  <button
+                    className={styles.gameMano__option}
+                    key={index}
+                    onClick={() => handeAnswerMano(answer)}
+                  >
                     {answer}
                   </button>
                 )
@@ -62,7 +66,9 @@ function Game({ gametype, resetGame }) {
           </div>
         ) : (
           <div className="gameDelgada">
-            delgada<button onClick={resetGame}>Volver a jugar</button>
+            delgada
+            <br />
+            <button onClick={resetGame}>Volver a jugar</button>
           </div>
         )}
       </div>

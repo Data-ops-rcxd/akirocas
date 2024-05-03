@@ -1,6 +1,7 @@
 .gameMano__options {
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 
 .gameMano__option {
