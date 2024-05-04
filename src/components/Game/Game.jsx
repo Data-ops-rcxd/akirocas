@@ -1,14 +1,11 @@
 /* eslint-disable react/prop-types */
 
 import { useState } from "react";
-import {
-  determineRockTypeMano,
-  questionsMano,
-  determineRockTypeDelgado,
-  questionsDelgado,
-} from "../../assets/js/rockgame";
+import { determineRockTypeMano, questionsMano } from "../../assets/js/rockgame";
 import Rockcard from "../Rockcard";
 import styles from "./Game.module.css";
+import DelgadoFelsico from "../Delgado/DelgadoFelsico";
+import DelgadoMafico from "../Delgado/DelgadoMafico";
 
 function Game({ gametype, resetGame }) {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
@@ -16,7 +13,7 @@ function Game({ gametype, resetGame }) {
   //Muestra de mano
   const [answersmano, setAnswersmano] = useState([]);
   //Seccion delgada
-  const [answersdelgado, setAnswersdelgado] = useState([]);
+  const [delgadotype, setdelgadotype] = useState(null);
 
   //muestra de mano
   const handeAnswerMano = (answer) => {
@@ -29,12 +26,6 @@ function Game({ gametype, resetGame }) {
     }
   };
 
-  //Seccion delgada
-  const handeAnswerDelgado = (answer) => {
-    setAnswersdelgado([...answersdelgado, answer]);
-    setCurrentQuestionIndex(currentQuestionIndex + 1);
-  };
-
   if (gametype == 1) {
     if (currentQuestionIndex >= questionsMano.length) {
       const rockType = determineRockTypeMano(answersmano);
@@ -45,18 +36,7 @@ function Game({ gametype, resetGame }) {
         </>
       );
     }
-  } else {
-    if (currentQuestionIndex >= questionsDelgado.length) {
-      const rockType = determineRockTypeDelgado(answersdelgado);
-      return (
-        <>
-          <Rockcard rock={rockType} />
-          <button onClick={resetGame}>Volver a jugar</button>
-        </>
-      );
-    }
   }
-
   return (
     <>
       <div className="cont">
@@ -83,25 +63,17 @@ function Game({ gametype, resetGame }) {
           </div>
         ) : (
           <div className="gameDelgada">
-            
-            <div className="gameDelgada__title">
-              {questionsDelgado[currentQuestionIndex].question}
-            </div>
-            <br />
-            <div className={styles.gameDelgada__options}>
-              {questionsDelgado[currentQuestionIndex].answers.map(
-                (answer, index) => (
-                  <button
-                    className={styles.gameDelgada__option}
-                    key={index}
-                    onClick={() => handeAnswerDelgado(answer)}
-                  >
-                    {answer}
-                  </button>
-                )
-              )}
-            </div>
-            Sigue en desarrollo...
+            {delgadotype === null ? (
+              <>
+                <button onClick={() => setdelgadotype(1)}>Felsico</button>
+                <button onClick={() => setdelgadotype(2)}>Mafico</button>
+              </>
+            ) : delgadotype === 1 ? (
+              <DelgadoFelsico resetGame={resetGame}/>
+              
+            ) : (
+              <DelgadoMafico resetGame={resetGame}/>
+            )}
           </div>
         )}
       </div>
